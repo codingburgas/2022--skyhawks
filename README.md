@@ -16,21 +16,21 @@
    </tr>
   <tr>
     <td>Dani Gramatikov</td>
-    <td>8 <sup>G</sup></td>
+    <td>9 <sup>B</sup></td>
     <td>Front End Devoleper</td>
     <td>DSGramatikov20@codingburgas.bg</td>
     
   </tr>
   <tr>
     <td>Stefan Chapkanov</td>
-    <td>8 <sup>G</sup></td>
+    <td>9 <sup>B</sup></td>
     <td>Front End Devoleper</td>
     <td>SNChapkanov20@codingburgas.bg</td>
     
   </tr>
   <tr>
     <td>Yordan Zhechev</td>
-    <td>8 <sup>G</sup></td>
+    <td>9 <sup>B</sup></td>
     <td>Front End Devoleper</td>
     <td>YBZhechev20@codingburgas.bg</td>
     
