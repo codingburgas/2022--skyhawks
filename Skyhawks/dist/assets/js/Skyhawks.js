@@ -1,69 +1,81 @@
- (function(modules) {
- 	// The module cache
- 	var installedModules = {};
-
- 	// The require function
- 	function __webpack_require__(moduleId) {
-
- 		// Check if module is in cache
- 		if(installedModules[moduleId]) {
- 			return installedModules[moduleId].exports;
- 		}
- 		// Create a new module (and put it into the cache)
- 		var module = installedModules[moduleId] = {
- 			i: moduleId,
- 			l: false,
- 			exports: {}
- 		};
-
- 		// Execute the module function
- 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
- 		// Flag the module as loaded
- 		module.l = true;
-
- 		// Return the exports of the module
- 		return module.exports;
- 	}
-
-
- 	// expose the modules object (__webpack_modules__)
- 	__webpack_require__.m = modules;
-
- 	// expose the module cache
- 	__webpack_require__.c = installedModules;
-
- 	// define getter function for harmony exports
- 	__webpack_require__.d = function(exports, name, getter) {
- 		if(!__webpack_require__.o(exports, name)) {
- 			Object.defineProperty(exports, name, {
- 				configurable: false,
- 				enumerable: true,
- 				get: getter
- 			});
- 		}
- 	};
-
- 	// getDefaultExport function for compatibility with non-harmony modules
- 	__webpack_require__.n = function(module) {
- 		var getter = module && module.__esModule ?
- 			function getDefault() { return module['default']; } :
- 			function getModuleExports() { return module; };
- 		__webpack_require__.d(getter, 'a', getter);
- 		return getter;
- 	};
-
- 	// Object.prototype.hasOwnProperty.call
- 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
- 	// __webpack_public_path__
- 	__webpack_require__.p = "";
-
- 	// Load entry module and return exports
- 	return __webpack_require__(__webpack_require__.s = 4);
- }) ([
-
- (function(module, exports, __webpack_require__) {
+/*!-----------------------------------------------------------------
+    Name: Godlike - Gaming HTML Template
+    Version: 2.3.4
+    Author: nK
+    Website: https://nkdev.info/
+    Purchase: https://themeforest.net/item/godlike-the-game-template/17166433?ref=_nK
+    Support: https://nk.ticksy.com/
+    License: You must have a valid license purchased only from ThemeForest (the above link) in order to legally use the theme for your project.
+    Copyright 2018.
+-------------------------------------------------------------------*/
+    /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -71,6 +83,11 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+/*------------------------------------------------------------------
+
+  Utility
+
+-------------------------------------------------------------------*/
 var $ = jQuery;
 var tween = window.TweenMax;
 var isIOs = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
@@ -123,6 +140,11 @@ function debounceResize(func) {
         window.dispatchEvent(new Event('resize'));
     }
 }
+
+/**
+ * Throttle scroll
+ * thanks: https://jsfiddle.net/mariusc23/s6mLJ/31/
+ */
 var hideOnScrollList = [];
 var didScroll = void 0;
 var lastST = 0;
@@ -172,6 +194,16 @@ function throttleScroll(callback) {
     hideOnScrollList.push(callback);
 }
 
+/**
+ * Body Overflow
+ * Thanks https://jsfiddle.net/mariusc23/s6mLJ/31/
+ * Usage:
+ *    // enable
+ *    bodyOverflow(1);
+ *
+ *    // disable
+ *    bodyOverflow(0);
+ */
 var bodyOverflowEnabled = void 0;
 var isBodyOverflowing = void 0;
 var scrollbarWidth = void 0;
@@ -227,6 +259,10 @@ function bodyOverflow(enable) {
     }
 }
 
+/**
+ * In Viewport checker
+ * return visible percent from 0 to 1
+ */
 function isInViewport($item, returnRect) {
     var rect = $item[0].getBoundingClientRect();
     var result = 1;
@@ -310,9 +346,9 @@ exports.isBodyOverflowed = isBodyOverflowed;
 exports.isInViewport = isInViewport;
 exports.scrollTo = scrollTo;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -320,6 +356,11 @@ exports.scrollTo = scrollTo;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+/*------------------------------------------------------------------
+
+  Theme Options
+
+-------------------------------------------------------------------*/
 var options = {
     enableSearchAutofocus: true,
     enableActionLikeAnimation: true,
@@ -393,6 +434,8 @@ var options = {
         actionHeart: function actionHeart(params) {
             params.updateIcon();
 
+            // fake timeout for demonstration
+            // Change on AJAX request or something
             setTimeout(function () {
                 var result = params.currentNum + (params.type === 'like' ? 1 : -1);
                 params.updateNum(result);
@@ -401,6 +444,8 @@ var options = {
         actionLike: function actionLike(params) {
             params.updateIcon();
 
+            // fake timeout for demonstration
+            // Change on AJAX request or something
             setTimeout(function () {
                 var additional = 0;
                 if (params.type === 'like') {
@@ -428,18 +473,18 @@ var options = {
 
 exports.options = options;
 
- }),
-,
-,
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 2 */,
+/* 3 */,
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(5);
 
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -546,14 +591,20 @@ var _initPluginTypedjs2 = __webpack_require__(50);
 var _initPluginSummernote2 = __webpack_require__(51);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-var SKYHAWKS = function () {
-    function SKYHAWKS() {
-        _classCallCheck(this, SKYHAWKS);
+
+/*------------------------------------------------------------------
+
+  GODIKE Class
+
+-------------------------------------------------------------------*/
+var GODLIKE = function () {
+    function GODLIKE() {
+        _classCallCheck(this, GODLIKE);
 
         this.options = _options.options;
     }
 
-    _createClass(SKYHAWKS, [{
+    _createClass(GODLIKE, [{
         key: 'init',
         value: function init() {
             // prt:sc:dm
@@ -876,15 +927,21 @@ var SKYHAWKS = function () {
         }
     }]);
 
-    return SKYHAWKS;
+    return GODLIKE;
 }();
 
+/*------------------------------------------------------------------
 
-window.SKYHAWKS = new SKYHAWKS();
+  Init Godlike
 
- }),
+-------------------------------------------------------------------*/
 
- (function(module, exports, __webpack_require__) {
+
+window.Godlike = new GODLIKE();
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -916,9 +973,9 @@ function setOptions(newOpts) {
 
 exports.setOptions = setOptions;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -930,6 +987,12 @@ exports.initShortcuts = exports.key = undefined;
 
 var _utility = __webpack_require__(0);
 
+/*------------------------------------------------------------------
+
+  Shortcuts
+  https://github.com/madrobby/keymaster
+
+-------------------------------------------------------------------*/
 function key(name, fn) {
     if (typeof window.key === 'undefined') {
         return;
@@ -1052,9 +1115,9 @@ function initShortcuts() {
 exports.key = key;
 exports.initShortcuts = initShortcuts;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1066,6 +1129,11 @@ exports.initBlog = undefined;
 
 var _utility = __webpack_require__(0);
 
+/*------------------------------------------------------------------
+
+  Init Blog
+
+-------------------------------------------------------------------*/
 function initBlog() {
     var $blogList = (0, _utility.$)('.nk-blog-list');
 
@@ -1079,9 +1147,9 @@ function initBlog() {
 
 exports.initBlog = initBlog;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1095,6 +1163,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _utility = __webpack_require__(0);
 
+/*------------------------------------------------------------------
+
+  Mouse Parallax
+
+-------------------------------------------------------------------*/
 var $parallaxMouseList = false;
 var parallaxMouseTimeout = void 0;
 // run parallax animation
@@ -1120,6 +1193,7 @@ function runParallaxMouse(x, y) {
         itemY = (itemCenterTop - y) / (y > itemCenterTop ? _utility.wndH - itemCenterTop : itemCenterTop);
 
         // animate
+        // yep, magic number just to let user add attribute data-mouse-parallax="4" instead of data-mouse-parallax="20"
         var maxOffset = 5 * data.z;
         _utility.tween.to(this, data.speed, {
             x: itemX * maxOffset,
@@ -1171,9 +1245,9 @@ function initParallaxMouse() {
 
 exports.initParallaxMouse = initParallaxMouse;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1185,6 +1259,11 @@ exports.initPreloader = undefined;
 
 var _utility = __webpack_require__(0);
 
+/*------------------------------------------------------------------
+
+  Init Preloader
+
+-------------------------------------------------------------------*/
 function initPreloader() {
     var self = this;
     var $preloader = (0, _utility.$)('.nk-preloader');
@@ -1390,6 +1469,12 @@ function initPreloader() {
         return;
     }
 
+    // Internal: Return the `href` component of given URL object with the hash
+    // portion removed.
+    //
+    // location - Location or HTMLAnchorElement
+    //
+    // Returns String
     function stripHash(href) {
         return href.replace(/#.*/, '');
     }
@@ -1432,6 +1517,7 @@ function initPreloader() {
     });
 
     // fix safari back button
+    // thanks http://stackoverflow.com/questions/8788802/prevent-safari-loading-from-cache-when-back-button-is-clicked
     _utility.$wnd.on('pageshow', function (e) {
         if (e.originalEvent.persisted) {
             self.closePreloader();
@@ -1441,9 +1527,9 @@ function initPreloader() {
 
 exports.initPreloader = initPreloader;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1455,6 +1541,11 @@ exports.initBackgroundVideo = undefined;
 
 var _utility = __webpack_require__(0);
 
+/*------------------------------------------------------------------
+
+  Init Background Video
+
+-------------------------------------------------------------------*/
 function initBackgroundVideo() {
     var $bg = (0, _utility.$)('.nk-page-background');
     if (!$bg.length || typeof window.VideoWorker === 'undefined') {
@@ -1564,6 +1655,28 @@ function initBackgroundVideo() {
                     resizeVideo($video, api);
                 });
 
+                // cover video on resize
+                (0, _utility.debounceResize)(function () {
+                    resizeVideo($video, api);
+                });
+
+                if (pauseOnPageLeave) {
+                    _utility.$wnd.on('blur focus', function (e) {
+                        // timeout for FireFox
+                        setTimeout(function () {
+                            // don't pause the background video when clicked on iframe.
+                            if (document.activeElement && document.activeElement.nodeName === 'IFRAME') {
+                                return;
+                            }
+
+                            if (e.type === 'blur') {
+                                api.pause();
+                            } else {
+                                api.play();
+                            }
+                        }, 0);
+                    });
+                }
             }
         }
     });
@@ -1571,9 +1684,9 @@ function initBackgroundVideo() {
 
 exports.initBackgroundVideo = initBackgroundVideo;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1616,7 +1729,7 @@ function initBackgroundAudio() {
 
         // deprecated.
     } else if (self.options.backgroundMusic) {
-        console.warn('Deprecated background audio from Skyhawks JS init options. Please, use `data-audio` block on the page.');
+        console.warn('Deprecated background audio from Godlike JS init options. Please, use `data-audio` block on the page.');
 
         audio = self.options.backgroundMusic;
         audioVolume = self.options.backgroundMusicVolume;
@@ -1792,9 +1905,9 @@ function initBackgroundAudio() {
 
 exports.initBackgroundAudio = initBackgroundAudio;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1880,9 +1993,9 @@ function initLinkEffects() {
 
 exports.initLinkEffects = initLinkEffects;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2102,9 +2215,9 @@ function initNavbar() {
 
 exports.initNavbar = initNavbar;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2415,9 +2528,9 @@ function initNavbarSide() {
 
 exports.initNavbarSide = initNavbarSide;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2551,9 +2664,9 @@ function initNavbarFullscreen() {
 
 exports.initNavbarFullscreen = initNavbarFullscreen;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2685,9 +2798,9 @@ function initNavbarDropEffect1() {
 
 exports.initNavbarDropEffect1 = initNavbarDropEffect1;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2797,9 +2910,9 @@ function initSearchBlock() {
 
 exports.initSearchBlock = initSearchBlock;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -2931,9 +3044,9 @@ function initCart() {
 
 exports.initCart = initCart;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -3121,9 +3234,9 @@ function initSignForm() {
 
 exports.initSignForm = initSignForm;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -3180,9 +3293,9 @@ function initHeaderTitle() {
 
 exports.initHeaderTitle = initHeaderTitle;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -3279,9 +3392,9 @@ function initCounters() {
 
 exports.initCounters = initCounters;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -3322,9 +3435,9 @@ function initSideButtons() {
 
 exports.initSideButtons = initSideButtons;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -3474,9 +3587,9 @@ function initActionsLike() {
 
 exports.initActionsLike = initActionsLike;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -3593,9 +3706,9 @@ function initAnchors() {
 
 exports.initAnchors = initAnchors;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -3689,9 +3802,9 @@ function initLinesForBoxes() {
 
 exports.initLinesForBoxes = initLinesForBoxes;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -3744,9 +3857,9 @@ function initImageBoxes() {
 
 exports.initImageBoxes = initImageBoxes;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -4016,9 +4129,9 @@ function initVideoBlocks() {
 
 exports.initVideoBlocks = initVideoBlocks;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -4145,9 +4258,9 @@ function initGIF() {
 
 exports.initGIF = initGIF;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -4190,9 +4303,9 @@ function initInfoBoxes() {
 
 exports.initInfoBoxes = initInfoBoxes;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -4310,9 +4423,9 @@ function initForms() {
 
 exports.initForms = initForms;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -4573,9 +4686,9 @@ function initFormsMailChimp() {
 
 exports.initFormsMailChimp = initFormsMailChimp;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -4605,9 +4718,9 @@ function initTeamMembers() {
 
 exports.initTeamMembers = initTeamMembers;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -4808,9 +4921,9 @@ function initAudioPlayer() {
 
 exports.initAudioPlayer = initAudioPlayer;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -4850,9 +4963,9 @@ function initFacebook() {
 
 exports.initFacebook = initFacebook;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -4955,9 +5068,9 @@ function initInstagram() {
 
 exports.initInstagram = initInstagram;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -5062,9 +5175,9 @@ function initTwitter() {
 
 exports.initTwitter = initTwitter;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -5138,9 +5251,9 @@ function initCookieAlert() {
 
 exports.initCookieAlert = initCookieAlert;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -5157,9 +5270,9 @@ function initPluginObjectFitImages() {
 
 exports.initPluginObjectFitImages = initPluginObjectFitImages;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -5207,9 +5320,9 @@ function initPluginStickySidebar() {
 
 exports.initPluginStickySidebar = initPluginStickySidebar;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -5226,9 +5339,9 @@ function initPluginFastClick() {
 
 exports.initPluginFastClick = initPluginFastClick;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -5249,9 +5362,9 @@ function initPluginNano($context) {
 
 exports.initPluginNano = initPluginNano;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -5353,9 +5466,9 @@ function initPluginJarallax() {
 
 exports.initPluginJarallax = initPluginJarallax;
 
- }),
-
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -5568,8 +5681,9 @@ function initPluginFlickity() {
 
 exports.initPluginFlickity = initPluginFlickity;
 
- }),
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -5622,8 +5736,9 @@ function initPluginIsotope() {
 
 exports.initPluginIsotope = initPluginIsotope;
 
- }),
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -5702,7 +5817,7 @@ function initPluginPhotoswipe() {
         var pswpElement = (0, _utility.$)('.pswp')[0];
         var items = parseThumbnailElements(galleryElement);
 
-        // define options
+        // define options (if needed)
         var options = {
             captionAndToolbarShowEmptyCaptions: false,
             mainClass: 'pswp--minimal--dark',
@@ -5717,6 +5832,10 @@ function initPluginPhotoswipe() {
 
             // Function builds caption markup
             addCaptionHTMLFn: function addCaptionHTMLFn(item, captionEl) {
+                // item      - slide object
+                // captionEl - caption DOM element
+                // isFake    - true when content is added to fake caption container
+                //             (used to get size of next or previous caption)
 
                 if (!item.title && !item.author) {
                     captionEl.children[0].innerHTML = '';
@@ -5743,6 +5862,7 @@ function initPluginPhotoswipe() {
         if (fromURL) {
             if (options.galleryPIDs) {
                 // parse real index when custom PIDs are used
+                // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
                 for (var j = 0; j < items.length; j++) {
                     if (items[j].pid === index) {
                         options.index = j;
@@ -5768,6 +5888,7 @@ function initPluginPhotoswipe() {
         // Pass data to PhotoSwipe and initialize it
         var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
 
+        // see: http://photoswipe.com/documentation/responsive-images.html
         var realViewportWidth = void 0;
         var useLargeImages = false;
         var firstResize = true;
@@ -5864,7 +5985,7 @@ function initPluginPhotoswipe() {
         i++;
     });
 
-    // Parse URL and open gallery
+    // Parse URL and open gallery if it contains #&pid=3&gid=1
     var hashData = photoswipeParseHash();
     if (hashData.pid && hashData.gid) {
         openPhotoSwipe(hashData.pid, $gallery.get(hashData.gid - 1), true, true);
@@ -5873,8 +5994,9 @@ function initPluginPhotoswipe() {
 
 exports.initPluginPhotoswipe = initPluginPhotoswipe;
 
- }),
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -5896,8 +6018,9 @@ function initPluginTabs() {
 
 exports.initPluginTabs = initPluginTabs;
 
- }),
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -5919,8 +6042,9 @@ function initPluginAccordions() {
 
 exports.initPluginAccordions = initPluginAccordions;
 
- }),
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -5952,8 +6076,9 @@ function initPluginCountdown() {
 
 exports.initPluginCountdown = initPluginCountdown;
 
- }),
- (function(module, exports, __webpack_require__) {
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -6019,9 +6144,9 @@ function initPluginTypedjs() {
 
 exports.initPluginTypedjs = initPluginTypedjs;
 
- }),
+/***/ }),
 /* 51 */
- (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -6066,5 +6191,5 @@ function initPluginSummernote() {
 
 exports.initPluginSummernote = initPluginSummernote;
 
- })
- ]);
+/***/ })
+/******/ ]);
